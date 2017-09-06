@@ -1,0 +1,49 @@
+{
+  "name": "webpack-settings828",
+  "version": "1.0.0",
+  "description": "Simple webpack configuration",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "webpack-dev-server --inline --hot --progress",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aa1479474496/webpack-settings828.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "zha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aa1479474496/webpack-settings828/issues"
+  },
+  "homepage": "https://github.com/aa1479474496/webpack-settings828#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.5",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.2.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "moment": "^2.18.1",
+    "optimize-css-assets-webpack-plugin": "^3.1.1",
+    "postcss-loader": "^2.0.6",
+    "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "url-loader": "^0.5.9",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.6.1"
+  }
+}
