@@ -10,7 +10,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: {
-        main: __dirname + '/app/main.js',
+        index: __dirname + '/assets/js/index.js',
+        list: __dirname + '/assets/js/list.js',
         vendor: ['jquery', 'moment']
     },
     output: {
@@ -31,7 +32,7 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 8,
+                    limit: 10000,
                     name: 'static/img/[name].[hash:7].[ext]'
                 }
             },
@@ -49,7 +50,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(
-            ['public/js/main.*.js', 'public/js/manifest.*.js', 'public/css/*.*.css'], {
+            ['public/*'], {
                 root: __dirname,
                 verbose: true,
                 dry: false
@@ -71,19 +72,25 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            title: 'webpack-demo',
-            template: 'index.html'
+            filename: 'index.html',
+            template: 'assets/pages/index.html',
+            chunks: ['vendor','manifest','index']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'list.html',
+            template: 'assets/pages/list.html',
+            chunks: ['vendor','manifest','list']
         }),
         // copy custom static assets
         new CopyWebpackPlugin([{
-            from: path.resolve(__dirname + '/static'),
-            to: path.resolve(__dirname + '/public/static'),
+            from: path.resolve(__dirname + '/assets/img/temp'),
+            to: path.resolve(__dirname + '/public/static/img'),
             ignore: ['.*']
         }])
     ],
     devServer: {
         inline: true,
         hot: true,
-        port: 8181
+        port: 8282
     }
 }
