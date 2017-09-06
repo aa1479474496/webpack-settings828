@@ -12,7 +12,7 @@ module.exports = {
     entry: {
         index: __dirname + '/assets/js/index.js',
         list: __dirname + '/assets/js/list.js',
-        vendor: ['bootstrap', 'moment']
+        vendor: ['moment']
     },
     output: {
         path: __dirname + '/public',
