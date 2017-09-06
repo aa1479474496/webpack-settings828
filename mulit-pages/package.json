@@ -21,7 +21,9 @@
     "url": "https://github.com/aa1479474496/webpack-settings828/issues"
   },
   "homepage": "https://github.com/aa1479474496/webpack-settings828#readme",
-  "dependencies": {},
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",

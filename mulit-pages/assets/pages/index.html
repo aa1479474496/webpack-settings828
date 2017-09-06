@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>多页面打包之index</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <div style="height:800px;"></div>
-        <div class="index">这是首页</div>
-        <img src="/static/img/item_icons.png" alt="">
-        <a href="./list.html">去list页面</a>
-        <div class="bac"></div>
-    </body>
+
+<head>
+    <title>多页面打包之index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="icon" href="/static/logo.ico" type="img/x-ico" />-->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <div style="height:800px;"></div>
+    <div class="index">这是首页</div>
+    <img src="/static/temp/item_icons.png" alt="">
+    <a href="./list.html">去list页面</a>
+    <div class="bac"></div>
+    <div class="row">
+        <div class="col-xs-4">bootstrap</div>
+    </div>
+    <div class="dropdown">
+        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown trigger
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</body>
+
 </html>

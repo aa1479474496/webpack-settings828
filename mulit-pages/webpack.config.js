@@ -12,7 +12,7 @@ module.exports = {
     entry: {
         index: __dirname + '/assets/js/index.js',
         list: __dirname + '/assets/js/list.js',
-        vendor: ['jquery', 'moment']
+        vendor: ['bootstrap', 'moment']
     },
     output: {
         path: __dirname + '/public',
@@ -32,7 +32,7 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 10000,
+                    limit: 8,
                     name: 'static/img/[name].[hash:7].[ext]'
                 }
             },
@@ -74,17 +74,19 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'assets/pages/index.html',
+            favicon: 'static/logo.ico',
             chunks: ['vendor','manifest','index']
         }),
         new HtmlWebpackPlugin({
             filename: 'list.html',
             template: 'assets/pages/list.html',
+            favicon: 'static/logo.ico',
             chunks: ['vendor','manifest','list']
         }),
         // copy custom static assets
         new CopyWebpackPlugin([{
-            from: path.resolve(__dirname + '/assets/img/temp'),
-            to: path.resolve(__dirname + '/public/static/img'),
+            from: path.resolve(__dirname + '/static'),
+            to: path.resolve(__dirname + '/public/static'),
             ignore: ['.*']
         }])
     ],
