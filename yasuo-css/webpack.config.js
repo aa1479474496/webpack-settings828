@@ -1,9 +1,11 @@
 var webpack = require('webpack')
+var path = require('path')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-// var extractCSS = new ExtractTextPlugin('[name].bundle.css')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+    // var extractCSS = new ExtractTextPlugin('[name].bundle.css')
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
@@ -13,8 +15,8 @@ module.exports = {
     },
     output: {
         path: __dirname + '/public',
-        filename: '[name].[id].js',
-        publicPath: '/public/'
+        filename: 'static/js/[name].[id].js',
+        publicPath: '/'
     },
     module: {
         rules: [{
@@ -26,11 +28,19 @@ module.exports = {
                 }
             },
             {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 8,
+                    name: 'static/img/[name].[hash:7].[ext]'
+                }
+            },
+            {
                 test: /\.(less|css)$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
-                        { loader: 'css-loader', options: { importLoaders: 1,minimize:true } },
+                        { loader: 'css-loader', options: { importLoaders: 1, minimize: true } },
                         'postcss-loader'
                     ]
                 })
@@ -39,7 +49,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(
-            ['public/main.*.js', 'public/manifest.*.js', 'public/*.*.css'], {
+            ['public/js/main.*.js', 'public/js/manifest.*.js', 'public/css/*.*.css'], {
                 root: __dirname,
                 verbose: true,
                 dry: false
@@ -49,7 +59,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest']
         }),
-        new ExtractTextPlugin("[name].bundle.css"),
+        new ExtractTextPlugin("static/css/[name].bundle.css"),
         new UglifyJsPlugin({
             beautify: true,
             exclude: ['/node_modules/'],
@@ -63,7 +73,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'webpack-demo',
             template: 'index.html'
-        })
+        }),
+        // copy custom static assets
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname + '/static'),
+            to: path.resolve(__dirname + '/public/static'),
+            ignore: ['.*']
+        }])
     ],
     devServer: {
         inline: true,
